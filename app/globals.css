@@ -1,0 +1,235 @@
+:root {
+  --paper: #f3e9d8;
+  --paper-dark: #e6d7bd;
+  --ink: #4a3728;
+  --ink-soft: #7a6552;
+  --accent: #a9532f;
+  --accent-dark: #7c3d20;
+  --polaroid-white: #fffdf7;
+  --shadow: rgba(74, 55, 40, 0.25);
+  --border: #c9b491;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image: radial-gradient(circle at 20% 20%, rgba(169, 83, 47, 0.05), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(74, 55, 40, 0.06), transparent 45%);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+}
+
+h1, h2, h3, .brand {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--paper-dark);
+  border-bottom: 3px double var(--border);
+}
+
+.navbar .brand {
+  font-size: 1.4rem;
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+.navbar nav a, .navbar nav button {
+  margin-left: 1rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: inherit;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.navbar nav a:hover, .navbar nav button:hover {
+  color: var(--accent);
+}
+
+/* ---------- FORMS ---------- */
+.form-card {
+  max-width: 420px;
+  margin: 3rem auto;
+  background: var(--polaroid-white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.form-card h1 {
+  margin-top: 0;
+  color: var(--accent-dark);
+  text-align: center;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: #fffef9;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+button.primary, input[type="submit"] {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.95rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+}
+
+button.primary:hover {
+  background: var(--accent-dark);
+}
+
+.error-text {
+  color: #a13a2a;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.helper-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- FEED / GALLERY ---------- */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.polaroid {
+  background: var(--polaroid-white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.75rem 0.75rem 1.1rem;
+  box-shadow: 0 4px 12px var(--shadow);
+  transform: rotate(var(--tilt, -1deg));
+  transition: transform 0.2s ease;
+}
+
+.polaroid:nth-child(3n) { --tilt: 1.2deg; }
+.polaroid:nth-child(3n+1) { --tilt: -1deg; }
+.polaroid:nth-child(3n+2) { --tilt: 0.6deg; }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid img, .polaroid video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background: #ece2cd;
+}
+
+.polaroid .caption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.polaroid .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.polaroid .meta button {
+  background: none;
+  border: none;
+  color: var(--accent-dark);
+  cursor: pointer;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+}
+
+.text-note {
+  background: repeating-linear-gradient(var(--polaroid-white), var(--polaroid-white) 27px, var(--border) 28px);
+  min-height: 160px;
+  padding: 0.5rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  background: var(--paper-dark);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+/* ---------- UPLOAD PAGE ---------- */
+.upload-card {
+  max-width: 520px;
+  margin: 2rem auto;
+  background: var(--polaroid-white);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.type-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.type-tabs button {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8rem;
+}
+
+.type-tabs button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent-dark);
+}
+
